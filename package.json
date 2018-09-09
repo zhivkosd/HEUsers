@@ -6,6 +6,8 @@
   "author": "Zhivko Dimitrov",
   "license": "MIT",
   "devDependencies": {
+    "concurrently": "^4.0.1",
+    "cross-env": "^5.2.0",
     "eslint": "^5.4.0",
     "jest": "^23.5.0",
     "nodemon": "^1.18.3",
@@ -18,7 +20,9 @@
     "mongoose": "^5.2.9"
   },
   "scripts": {
-    "start": "node_modules/.bin/nodemon server.js",
+    "start": "node server.js",
+    "nodemon": "node_modules/.bin/nodemon server.js",
+    "start:dev": "concurrently --kill-others-on-fail \"yarn nodemon\"",
     "test": "node_modules/.bin/jest"
   }
 }
