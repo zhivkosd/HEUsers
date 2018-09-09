@@ -42,7 +42,17 @@ module.exports = (router) => {
     })
     
     router.route('/users/:user_id')
-    .delete((req, res, next) => {
+    .get((req, res) => {
+        if (req.params.user_id) {
+            userModel.findById(req.params.user_id, (err, user) => {
+                if (err) throw err;
+                res.json(user);
+            });
+        } else {
+            res.send('Something went wrong');
+        }
+    })
+    .delete((req, res) => {
         if (req.params.user_id) {
             userModel.findByIdAndDelete(req.params.user_id, (err, data) => {
                 if (err) {
@@ -55,7 +65,7 @@ module.exports = (router) => {
             res.send('Something went wrong. Please check did you send the right parameter');
         }
     })
-    .put(urlencodedParser, (req, res, next) => {
+    .put(urlencodedParser, (req, res) => {
         if (req.params.user_id) {
             userModel.findByIdAndUpdate(req.params.user_id, {
                 givenName: req.body.givenName,
