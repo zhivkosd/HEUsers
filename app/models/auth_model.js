@@ -26,6 +26,13 @@ function getCredentials(auth) {
     };
 }
 
+function encodeToBase64(user, pass) {
+    if (user && pass) {
+        return btoa(user + ':' + pass);
+    }
+    return '';
+}
+
 function checkAuth(auth) {
     return new Promise((resolve, reject) => {
         if (auth) {
@@ -42,5 +49,6 @@ function checkAuth(auth) {
 }
 
 module.exports = {
-    check: checkAuth
+    check: checkAuth,
+    encodeToBase64: encodeToBase64
 };

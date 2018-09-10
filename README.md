@@ -26,3 +26,7 @@ DELETE | /users/:user_id | delete user with user_id
 
 ## Dev Mode
 * Start the server using [nodemon](https://nodemon.io/) - `yarn start:dev`
+
+## Tests
+* Still in progress, but there are few which can be executed.
+* They depend on some `env` variables - `DB_URL`, `AUTH_USER` and `AUTH_PASS` - the credentials that I gave you :)
